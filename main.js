@@ -1293,29 +1293,38 @@ function runBgAni(){
 	var has_video = $('#bgImages li.active .has_video');
 	if( has_video.length > 0 )
 	{
-		var player = polyvObject('#contentBoxContainer-video').livePlayer({
-		'width':'854',
-		'height':'480',
-		'uid':'51ed3b4e38',
-		'vid':'125233'
-		});
-		// if($('#hide_video')) {
-		// 	var video = $('<video></video>');
-		// 	video.addClass = "video-js vjs-default-skin";
-		// 	// var video = document.createElement('video');
-		// 	video.attr('id','vid1');
-		// 	video.appendTo($('#contentBoxContainer-video'));
-		// 	videojs("vid1",{
-		// 		width: 854,
-		// 		height: 480,
-		// 		techOrder: ["youtube", "html5"],
-		// 		controls: true,
-		// 		sources: [{ 
-		// 			type: "video/youtube", 
-		// 			src: "https://youtu.be/y60wDzZt8yg",
-		// 		}]
-		// 	});
-		// }
+		
+		$('#contentBoxContainer-video').empty();
+		var vid = has_video.text();
+		if( vid.substring(0,4) == 'http')
+		{
+			if($('#bgImages li.active .has_video')) {
+				var video = $('<video></video>');
+				video.addClass = "video-js vjs-default-skin";
+				// var video = document.createElement('video');
+				video.attr('id','vid1'+initialId);
+				video.appendTo($('#contentBoxContainer-video'));
+				videojs('vid1'+initialId,{
+					width: 854,
+					height: 480,
+					techOrder: ["youtube", "html5"],
+					controls: true,
+					sources: [{ 
+						type: "video/youtube", 
+						src: vid,
+					}]
+				});
+			}
+			initialId++;
+		}
+		else{
+			var player = polyvObject('#contentBoxContainer-video').livePlayer({
+			'width':'854',
+			'height':'480',
+			'uid':'51ed3b4e38',
+			'vid': vid
+			});
+		}
 
 		$('#content-video').stop(true).animate({clip: 'rect(0px, '+$('#content-video').width()+'px, '+($('#content-video').height()+20)+'px, '+$('#content-video').width()+'px)'}, 800 , 'easeOutQuad', function(){
 			$('#content-video').css({ opacity: 1 });
@@ -1324,6 +1333,7 @@ function runBgAni(){
 		});
 	}
 	else{
+		$('#contentBoxContainer-video').empty();
 		$('#content-video').css({ opacity: 0 });
 	}
 
