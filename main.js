@@ -482,13 +482,21 @@ function galleryThumbs(activeItem, mode){
 	});
 	
 	$('#bgImages li').each(function(){
-		var mediaType = getMediaType($(this).find('a').attr('href'));
-		if(mediaType=='youtube' || mediaType=='vimeo' || mediaType=='jwplayer')
-			$(this).append($('<div></div>').addClass('thumbType thumbVideo').css('opacity', '0'));
-		else if(mediaType=='flash')
-			$(this).append($('<div></div>').addClass('thumbType thumbFlash').css('opacity', '0'));
-		else
-			$(this).append($('<div></div>').addClass('thumbType thumbImage').css('opacity', '0'));
+		// var mediaType = getMediaType($(this).find('a').attr('href'));
+		var mediaType = $(this).find("a").attr('class');
+		if(mediaType=='li-live')
+		{
+			$(this).append($('<div></div>').addClass('thumbType thumbLive').css('opacity', '0'));
+		}
+		else{
+			$(this).append($('<div></div>').addClass('thumbType thumbVod').css('opacity', '0'));
+		}
+		// if(mediaType=='youtube' || mediaType=='vimeo' || mediaType=='jwplayer')
+		// 	$(this).append($('<div></div>').addClass('thumbType thumbVideo').css('opacity', '0'));
+		// else if(mediaType=='flash')
+		// 	$(this).append($('<div></div>').addClass('thumbType thumbFlash').css('opacity', '0'));
+		// else
+		// 	$(this).append($('<div></div>').addClass('thumbType thumbImage').css('opacity', '0'));
 	});
 	
 	if(activeItem==undefined){
@@ -1316,7 +1324,41 @@ function runBgAni(){
 					}]
 				});
 
+				// var player;
+				// function onYouTubeIframeAPIReady() {
+				//     player = new YT.Player('contentBoxContainer-video', {
+				//         width: 600,
+				//         height: 400,
+				//         videoId: 'Xa0Q0J5tOP0',
+				//         playerVars: {
+				//             color: 'white',
+				//         },
+				//         events: {
+				//             onReady: initialize
+				//         }
+				//     });
+				// }
+
+				// function initialize(){
+
+				//     // Update the controls on load
+				//     updateTimerDisplay();
+				//     updateProgressBar();
+
+				//     // Clear any old interval.
+				//     clearInterval(time_update_interval);
+
+				//     // Start interval to update elapsed time display and
+				//     // the elapsed part of the progress bar every second.
+				//     time_update_interval = setInterval(function () {
+				//         updateTimerDisplay();
+				//         updateProgressBar();
+				//     }, 1000)
+
+				// }
+
 			}
+			// data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}], "youtube": { "customVars": { "wmode": "transparent" } } }'
 			initialId++;
 		}
 		else if( vid.substring(0,4) == 'live' )

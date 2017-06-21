@@ -21,6 +21,9 @@
 <script src='//player.polyv.net/script/polyvplayer.min.js'></script>
 <script src="https://player.polyv.net/livescript/liveplayer.js"></script>
 
+<!-- youtube video api -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/jquery.history.js"></script>
 <script type="text/javascript" src="js/clip.js"></script>
@@ -102,7 +105,7 @@ var initialId = 0;
 	-->
 	<ul id="bgImages">
 		<li>
-			<a href="https://youtu.be/-NFP1F6hl_U?width=560&height=315"><img class="thumb" src="images/background/bon_tv_th.jpg" alt="" /></a>
+			<a href="https://youtu.be/-NFP1F6hl_U?width=560&height=315" class="li-live"><img class="thumb" src="images/background/bon_tv_th.jpg" alt="" /></a>
 			<h3>BonCloud Youtube Live</h3>
 			<p>The UK’s lowest priced fibre with Sky TV Sky TV is home to unmissable shows on Sky Atlantic like Twin Peaks and Riviera.</p>
 		</li>
@@ -112,28 +115,28 @@ var initialId = 0;
 			<p>The UK’s lowest priced fibre with Sky TV Sky TV is home to unmissable shows on Sky Atlantic like Twin Peaks and Riviera.</p>
 		</li> -->
 		<li>
-			<a href="images/background/bon_tv.jpg"><img class="thumb" src="images/background/bon_bg1_th.jpg" alt="" /></a>
+			<a href="images/background/bon_tv.jpg" class="li-live"><img class="thumb" src="images/background/bon_bg1_th.jpg" alt="" /></a>
 			<div class="has_video" style="display: none;">https://youtu.be/-3D8YamWuyw</div>
 
 			<h3>When Cargo from China Meets Hamburg Crane Operator</h3>
 			<p>China's one road one belt initiative has been implementedfor 3 years now since 2013. The China Europe Block train – also known as the “NewSilk Road” is one of the most important parts of the project. What does thisrailway brought to the people along the route? Our team traveled from Beijingto Hamburg Germany – One of the largest hubs along the China Europe Block trainroute. We are taking you to meet our young friend,  Samir Turkvic, 21 years old trainee who just finished his 3years of training to become a crane operator here at the DUSS Terminal.</p>
 		</li>
 		<li>
-			<a href="images/background/bon_bg1.jpg"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
+			<a href="images/background/bon_bg1.jpg" class="li-live"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
 			<div class="has_video" style="display: none;">live112967</div>
 
 			<h3>Polyv Live Video</h3>
 			<p>Donec pellentesque faucibus facilisis. Etiam ullamcorper, felis sed tincidunt pellentesque, libero enim metus.</p>
 		</li>
 		<li>
-			<a href="images/background/bon_bg1.jpg"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
+			<a href="images/background/bon_bg1.jpg" class="li-vod"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
 			<div class="has_video" style="display: none;">51ed3b4e38e17e030e0757343fd3f10a_5</div>
 
 			<h3>Polyv Vod Video</h3>
 			<p>Donec pellentesque faucibus facilisis. Etiam ullamcorper, felis sed tincidunt pellentesque, libero enim metus.</p>
 		</li>
 		<li>
-			<a href="https://youtu.be/ASGic60FcRw?width=560&height=315&autoplay=0"><img class="thumb" src="images/background/obor1_th.jpg" alt="" /></a>
+			<a href="https://youtu.be/ASGic60FcRw?width=560&height=315&autoplay=0" class="li-vod"><img class="thumb" src="images/background/obor1_th.jpg" alt="" /></a>
 
 			<!-- BEGIN: description; h3 and p tags are optional -->
 			<h3>The Railway that Links China & Rotterdam</h3>
@@ -141,7 +144,7 @@ var initialId = 0;
 		</li>
 		
 		<li>
-			<a href="https://youtu.be/y60wDzZt8yg?width=560&height=315"><img class="thumb" src="images/background/sky_tv_th.jpg" alt="" /></a>
+			<a href="https://youtu.be/y60wDzZt8yg?width=560&height=315" class="li-live"><img class="thumb" src="images/background/sky_tv_th.jpg" alt="" /></a>
 			<h3>SKY TV</h3>
 			<p>The UK’s lowest priced fibre with Sky TV Sky TV is home to unmissable shows on Sky Atlantic like Twin Peaks and Riviera.</p>
 		</li>
@@ -162,7 +165,7 @@ var initialId = 0;
 				<a href="/videos/myvideo.flv?width=711&height=400"> You must define Video path and width & height parameters.
 				Supported Formats; flv, f4v, m4v, mp4, mov
 			-->
-			<a href="https://youtu.be/ASGic60FcRw?width=560&height=315&autoplay=0"><img class="thumb" src="images/background/obor1_th.jpg" alt="" /></a>
+			<a href="https://youtu.be/ASGic60FcRw?width=560&height=315&autoplay=0" class="li-live"><img class="thumb" src="images/background/obor1_th.jpg" alt="" /></a>
 
 			<!-- BEGIN: description; h3 and p tags are optional -->
 			<h3>The Railway that Links China & Rotterdam</h3>
@@ -171,37 +174,37 @@ var initialId = 0;
 		</li>
 		<!-- END: Background Element -->
 		<li>			
-			<a href="http://youtu.be/zTtpFmgBmTI?width=560&height=315"><img class="thumb" src="images/background/bg1_th.jpg" alt="" /></a>
+			<a href="http://youtu.be/zTtpFmgBmTI?width=560&height=315" class="li-live"><img class="thumb" src="images/background/bg1_th.jpg" alt="" /></a>
 			<h3>CLAIRE WILLIAMS</h3>
 			<p>Vestibulum vitae condimentum dolor. Aenean fermentum, tellus at fermentum vulputate, velit est vulputate amet.</p>
 		</li>
 		<li>
-			<a href="images/background/bg3.jpg"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
+			<a href="images/background/bg3.jpg" class="li-vod"><img class="thumb" src="images/background/bg3_th.jpg" alt="" /></a>
 			<h3>FABIANA BROWN</h3>
 			<p>Integer sit amet neque lacus, nec vehicula erat. Aliquam ac sem ut magna mattis tristique. Duis lorem posuere.</p>
 		</li>
 		<li>
-			<a href="images/background/bg4.jpg"><img class="thumb" src="images/background/bg4_th.jpg" alt="" /></a>
+			<a href="images/background/bg4.jpg" class="li-vod"><img class="thumb" src="images/background/bg4_th.jpg" alt="" /></a>
 			<h3>GABRIELLA DAVIS</h3>
 			<p>Mauris id quam mi, nec dictum mauris. Morbi non eros quis erat facilisis scelerisque at in sapien. Etiam amet.</p>
 		</li>
 		<li>
-			<a href="images/background/bg5.jpg"><img class="thumb" src="images/background/bg5_th.jpg" alt="" /></a>
+			<a href="images/background/bg5.jpg" class="li-vod"><img class="thumb" src="images/background/bg5_th.jpg" alt="" /></a>
 			<h3>IOLA MILLER</h3>
 			<p>Morbi ligula massa, ornare eu venenatis eget, porttitor eget dui. Duis fringilla sapien nec est interdum amet.</p>
 		</li>
  		<li>
-			<a href="images/background/bg6.jpg"><img class="thumb" src="images/background/bg6_th.jpg" alt="" /></a>
+			<a href="images/background/bg6.jpg" class="li-vod"><img class="thumb" src="images/background/bg6_th.jpg" alt="" /></a>
 			<h3>MARIA WILSON</h3>
 			<p>Suspendisse bibendum, erat et porttitor ultricies, nibh arcu molestie ligula, a lobortis leo ipsum sed nullam.</p>
 		</li>
 		<li>
-			<a href="images/background/bg7.jpg"><img class="thumb" src="images/background/bg7_th.jpg" alt="" /></a>
+			<a href="images/background/bg7.jpg" class="li-vod"><img class="thumb" src="images/background/bg7_th.jpg" alt="" /></a>
 			<h3>GILLIAN MOORE</h3>
 			<p>Etiam sit amet ante tortor, ut adipiscing lacus. Curabitur sapien tellus, varius vel posuere quis turpis duis.</p>
 		</li>
 		<li>
-			<a href="images/background/bg8.jpg"><img class="thumb" src="images/background/bg8_th.jpg" alt="" /></a>
+			<a href="images/background/bg8.jpg" class="li-vod"><img class="thumb" src="images/background/bg8_th.jpg" alt="" /></a>
 			<h3>CAMERON ANDERSON</h3>
 			<p>Aliquam volutpat pulvinar eros sit amet ultricies. Vivamus tincidunt suscipit sodales. Donec dictum, tortora.</p>
 		</li>
