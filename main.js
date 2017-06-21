@@ -1291,6 +1291,7 @@ function runBg(){
 function runBgAni(){
 	clearInterval(bgTimer);
 	var has_video = $('#bgImages li.active .has_video');
+	$('#bgControl #bgControlButtons .fitte').css({ display: 'inline' });
 	if( has_video.length > 0 )
 	{
 		
@@ -1299,7 +1300,7 @@ function runBgAni(){
 		if( vid.substring(0,4) == 'http')
 		{
 			if($('#bgImages li.active .has_video')) {
-				var video = $('<video></video>');
+				var video = $('<video controls></video>');
 				video.addClass = "video-js vjs-default-skin";
 				// var video = document.createElement('video');
 				video.attr('id','vid1'+initialId);
@@ -1308,16 +1309,19 @@ function runBgAni(){
 					width: 854,
 					height: 480,
 					techOrder: ["youtube", "html5"],
-					controls: true,
+					controls: 1,
 					sources: [{ 
 						type: "video/youtube", 
 						src: vid,
 					}]
 				});
+
 			}
 			initialId++;
 		}
-		else{
+		else if( vid.substring(0,4) == 'live' )
+		{
+			var liveVid = vid.substring(4);
 			var player = polyvObject('#contentBoxContainer-video').livePlayer({
 			'width':'854',
 			'height':'480',
@@ -1325,7 +1329,15 @@ function runBgAni(){
 			'vid': vid
 			});
 		}
+		else{
+			var player = polyvObject('#contentBoxContainer-video').videoPlayer({
+			'width':'854',
+			'height':'480',
+			'vid' : vid
+			});
+		}
 
+		$('#bgControl #bgControlButtons .fitte').css({ display: 'none' });
 		$('#content-video').stop(true).animate({clip: 'rect(0px, '+$('#content-video').width()+'px, '+($('#content-video').height()+20)+'px, '+$('#content-video').width()+'px)'}, 800 , 'easeOutQuad', function(){
 			$('#content-video').css({ opacity: 1 });
 			$('#content-video').css('clip','rect(0px, 0px, '+($('#content-video').height()+20)+'px, 0px)');
