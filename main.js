@@ -1046,7 +1046,7 @@ function setVideoMuteIcon(){
 
 /*Youtube Api Begin*/ 
 var tag = document.createElement('script');
-tag.src = "http://www.youtube.com/player_api";
+tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -1307,59 +1307,43 @@ function runBgAni(){
 		var vid = has_video.text();
 		if( vid.substring(0,4) == 'http')
 		{
-			if($('#bgImages li.active .has_video')) {
-				var video = $('<video controls></video>');
-				video.addClass = "video-js vjs-default-skin";
-				// var video = document.createElement('video');
+			var url = vid;
+			var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+			
+			if(videoid != null) {
+				var video = $('<iframe></iframe>');
 				video.attr('id','vid1'+initialId);
 				video.appendTo($('#contentBoxContainer-video'));
-				videojs('vid1'+initialId,{
+				video.attr({
 					width: 854,
 					height: 480,
-					techOrder: ["youtube", "html5"],
-					controls: 1,
-					sources: [{ 
-						type: "video/youtube", 
-						src: vid,
-					}]
+					frameborder: 0,
+					allowfullscreen: 1,
+					src: 'https://www.youtube.com/embed/'+videoid[1]
 				});
-
-				// var player;
-				// function onYouTubeIframeAPIReady() {
-				//     player = new YT.Player('contentBoxContainer-video', {
-				//         width: 600,
-				//         height: 400,
-				//         videoId: 'Xa0Q0J5tOP0',
-				//         playerVars: {
-				//             color: 'white',
-				//         },
-				//         events: {
-				//             onReady: initialize
-				//         }
-				//     });
-				// }
-
-				// function initialize(){
-
-				//     // Update the controls on load
-				//     updateTimerDisplay();
-				//     updateProgressBar();
-
-				//     // Clear any old interval.
-				//     clearInterval(time_update_interval);
-
-				//     // Start interval to update elapsed time display and
-				//     // the elapsed part of the progress bar every second.
-				//     time_update_interval = setInterval(function () {
-				//         updateTimerDisplay();
-				//         updateProgressBar();
-				//     }, 1000)
-
-				// }
-
+			} else { 
+			    console.log("The youtube url is not valid.");
 			}
-			// data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}], "youtube": { "customVars": { "wmode": "transparent" } } }'
+
 			initialId++;
+
+			// addYoutubeVideo();
+			// var video = $('<video controls></video>');
+			// video.addClass = "video-js vjs-default-skin";
+			// // var video = document.createElement('video');
+			// video.attr('id','vid1'+initialId);
+			// video.appendTo($('#contentBoxContainer-video'));
+			// videojs('vid1'+initialId,{
+			// 	width: 854,
+			// 	height: 480,
+			// 	techOrder: ["youtube", "html5"],
+			// 	controls: 1,
+			// 	sources: [{ 
+			// 		type: "video/youtube", 
+			// 		src: vid,
+			// 	}]
+			// });
+						
 		}
 		else if( vid.substring(0,4) == 'live' )
 		{
@@ -1746,7 +1730,9 @@ function closeSubMenu(menuID){
 function menuItemOver(obj){
 	clearTimeout(menuTimer);			
 	if(audioSupport)
+	{
 		btnSound.play();
+	}
 }
 
 // Main Menu Show Animation
@@ -2040,3 +2026,157 @@ function addionalCharacter(pageLoadingURL){
 	else
 		return '?';
 }
+
+
+// function addYoutubeVideo(){
+
+// 	var player,
+// 	time_update_interval = 0;
+
+// 	function onYouTubeIframeAPIReady() {
+// 	    player = new YT.Player('contentBoxContainer-video', {
+// 	        width: 854,
+// 	        height: 480,
+// 	        channelId: '3D8YamWuyw',
+// 	        playerVars: {
+// 	            color: 'white',
+// 	            playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+// 	        },
+// 	        events: {
+// 	            onReady: initialize
+// 	        }
+// 	    });
+// 	}
+
+// 	function initialize(){
+
+// 	    // Update the controls on load
+// 	    updateTimerDisplay();
+// 	    updateProgressBar();
+
+// 	    // Clear any old interval.
+// 	    clearInterval(time_update_interval);
+
+// 	    // Start interval to update elapsed time display and
+// 	    // the elapsed part of the progress bar every second.
+// 	    time_update_interval = setInterval(function () {
+// 	        updateTimerDisplay();
+// 	        updateProgressBar();
+// 	    }, 1000);
+
+
+// 	    $('#volume-input').val(Math.round(player.getVolume()));
+// 	}
+
+// 	// This function is called by initialize()
+// 	function updateTimerDisplay(){
+// 	    // Update current time text display.
+// 	    $('#current-time').text(formatTime( player.getCurrentTime() ));
+// 	    $('#duration').text(formatTime( player.getDuration() ));
+// 	}
+
+
+// 	// This function is called by initialize()
+// 	function updateProgressBar(){
+// 	    // Update the value of our progress bar accordingly.
+// 	    $('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
+// 	}
+
+// 	// Progress bar
+
+// 	$('#progress-bar').on('mouseup touchend', function (e) {
+
+// 	    // Calculate the new time for the video.
+// 	    // new time in seconds = total duration in seconds * ( value of range input / 100 )
+// 	    var newTime = player.getDuration() * (e.target.value / 100);
+
+// 	    // Skip video to new time.
+// 	    player.seekTo(newTime);
+
+// 	});
+
+// 	// Playback
+
+// 	$('#play').on('click', function () {
+// 	    player.playVideo();
+// 	});
+
+
+// 	$('#pause').on('click', function () {
+// 	    player.pauseVideo();
+// 	});
+
+
+// 	// Sound volume
+
+
+// 	$('#mute-toggle').on('click', function() {
+// 	    var mute_toggle = $(this);
+
+// 	    if(player.isMuted()){
+// 	        player.unMute();
+// 	        mute_toggle.text('volume_up');
+// 	    }
+// 	    else{
+// 	        player.mute();
+// 	        mute_toggle.text('volume_off');
+// 	    }
+// 	});
+
+// 	$('#volume-input').on('change', function () {
+// 	    player.setVolume($(this).val());
+// 	});
+
+
+// 	// Other options
+
+
+// 	$('#speed').on('change', function () {
+// 	    player.setPlaybackRate($(this).val());
+// 	});
+
+// 	$('#quality').on('change', function () {
+// 	    player.setPlaybackQuality($(this).val());
+// 	});
+
+
+// 	// Playlist
+
+// 	$('#next').on('click', function () {
+// 	    player.nextVideo()
+// 	});
+
+// 	$('#prev').on('click', function () {
+// 	    player.previousVideo()
+// 	});
+
+
+// 	// Load video
+
+// 	$('.thumbnail').on('click', function () {
+
+// 	    var url = $(this).attr('data-video-id');
+
+// 	    player.cueVideoById(url);
+
+// 	});
+
+
+// 	// Helper Functions
+
+// 	function formatTime(time){
+// 	    time = Math.round(time);
+
+// 	    var minutes = Math.floor(time / 60),
+// 	        seconds = time - minutes * 60;
+
+// 	    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+// 	    return minutes + ":" + seconds;
+// 	}
+
+
+// 	$('pre code').each(function(i, block) {
+// 	    hljs.highlightBlock(block);
+// 	});
+// }
