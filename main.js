@@ -1365,14 +1365,14 @@ function runBgAni(){
 
 		$('#bgControl #bgControlButtons .fitte').css({ display: 'none' });
 		$('#content-video').stop(true).animate({clip: 'rect(0px, '+$('#content-video').width()+'px, '+($('#content-video').height()+20)+'px, '+$('#content-video').width()+'px)'}, 800 , 'easeOutQuad', function(){
-			$('#content-video').css({ opacity: 1 });
+			$('#content-video').css({ opacity: 1, display: 'block' });
 			$('#content-video').css('clip','rect(0px, 0px, '+($('#content-video').height()+20)+'px, 0px)');
 			$('#content-video').animate({clip: 'rect(0px, '+$('#content-video').width()+'px, '+($('#content-video').height()+20)+'px, 0px'}, 800, 'easeOutQuad');
 		});
 	}
 	else{
 		$('#contentBoxContainer-video').empty();
-		$('#content-video').css({ opacity: 0 });
+		$('#content-video').css({ opacity: 0, display: 'none'});
 	}
 
 	$('#bgText').stop(true).animate({clip: 'rect(0px, '+$('#bgText').width()+'px, '+($('#bgText').height()+20)+'px, '+$('#bgText').width()+'px)'}, 800 , 'easeOutQuad', function(){
@@ -2026,6 +2026,7 @@ function addionalCharacter(pageLoadingURL){
 	else
 		return '?';
 }
+
 
 
 // function addYoutubeVideo(){
