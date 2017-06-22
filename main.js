@@ -610,7 +610,8 @@ function changeMode(fullM, fitM){
 }
 
 function setFull(){
-	changeMode(true, false);
+	// changeMode(true, false);
+	changeModalMode(true, false);
 }
 
 function setMin(){
@@ -618,7 +619,8 @@ function setMin(){
 }
 
 function setFit(){
-	changeMode(true, true);
+	changeModalMode(true, true);
+	// changeMode(true, true);
 }
 
 // init menu
@@ -1202,6 +1204,7 @@ function runBg(){
 					'onStateChange': onPlayerStateChange
 				  }
 				});
+				$('#bgImageWrapper').prepend($('<img src="images/background/video-background.jpg"/>').addClass('new source').css('opacity','0'));
 			}
 			
 			
@@ -1274,7 +1277,7 @@ function runBg(){
 		activePlayer = 'none';
 		bgRunning = true;
 		showLoading();
-		$('#bgImageWrapper').prepend($('<img src="'+$('#bgImages li.active a').attr('href')+'" />').addClass('new source').css('opacity','0'));
+		$('#bgImageWrapper').prepend($('<img src="'+$('#bgImages li.active img').attr('src')+'" />').addClass('new source').css('opacity','0'));
 		$('#bgImageWrapper img.new').load(function(){
 			$(this).css('opacity', '0');
 			$(this).attr('width', $(this).width());
@@ -1300,6 +1303,7 @@ function runBgAni(){
 	clearInterval(bgTimer);
 	var has_video = $('#bgImages li.active .has_video');
 	$('#bgControl #bgControlButtons .fitte').css({ display: 'inline' });
+	$('#bgControl #bgControlButtons .full').css({ display: 'none' });
 	if( has_video.length > 0 )
 	{
 		
@@ -2027,6 +2031,46 @@ function addionalCharacter(pageLoadingURL){
 		return '?';
 }
 
+function changeModalMode2(){
+	$('#bgImageWrapper iframe').css({
+		width: '854px',
+		height: '480px',
+		position: 'relative',
+    	top: '20%'
+	})
+	$('#bgControl .fitte').hide();
+	$('#bgControl .full').show();
+}
+
+function changeModalMode(fullM, fitM){
+
+	if(fitM){
+		$('#bgControl .fitte').hide();
+		$('#bgControl .full').show();
+
+		$('#bgImageWrapper iframe').css({
+			position: 'relative',
+    	    'z-index': '50'
+		}).animate({
+			width: '854px',
+			height: '480px',
+			top: '20%',
+		}, 600);
+	}else{
+		$('#bgControl .full').hide();
+		$('#bgControl .fitte').show();
+		$('#bgImageWrapper iframe').css({
+			position: 'relative',
+	    	'z-index': '0'
+		}).animate({
+			width: $('#ytVideo').width(),
+			height: $('#ytVideo').height(),
+			top: '0',
+		}, 600);
+		
+	}
+	
+}
 
 
 // function addYoutubeVideo(){
