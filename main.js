@@ -1319,8 +1319,8 @@ function runBgAni(){
 				video.attr('id','vid1'+initialId);
 				video.appendTo($('#contentBoxContainer-video'));
 				video.attr({
-					width: 854,
-					height: 480,
+					width: 900,
+					height: 506,
 					frameborder: 0,
 					allowfullscreen: 1,
 					src: 'https://www.youtube.com/embed/'+videoid[1]
@@ -1353,16 +1353,16 @@ function runBgAni(){
 		{
 			var liveVid = vid.substring(4);
 			var player = polyvObject('#contentBoxContainer-video').livePlayer({
-			'width':'854',
-			'height':'480',
+			'width':'900',
+			'height':'506',
 			'uid':'51ed3b4e38',
 			'vid': vid
 			});
 		}
 		else{
 			var player = polyvObject('#contentBoxContainer-video').videoPlayer({
-			'width':'854',
-			'height':'480',
+			'width':'900',
+			'height':'506',
 			'vid' : vid
 			});
 		}
@@ -2033,8 +2033,8 @@ function addionalCharacter(pageLoadingURL){
 
 function changeModalMode2(){
 	$('#bgImageWrapper iframe').css({
-		width: '854px',
-		height: '480px',
+		width: '900px',
+		height: '506px',
 		position: 'relative',
     	top: '20%'
 	})
@@ -2052,8 +2052,8 @@ function changeModalMode(fullM, fitM){
 			position: 'relative',
     	    'z-index': '50'
 		}).animate({
-			width: '854px',
-			height: '480px',
+			width: '900px',
+			height: '506px',
 			top: '20%',
 		}, 600);
 	}else{
