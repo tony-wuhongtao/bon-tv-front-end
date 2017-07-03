@@ -1204,7 +1204,12 @@ function runBg(){
 					'onStateChange': onPlayerStateChange
 				  }
 				});
-				$('#bgImageWrapper').prepend($('<img src="images/background/video-background.jpg"/>').addClass('new source').css('opacity','0'));
+
+				//Random video Background
+				var x = 1;
+				var y = 4;
+				var imageValue = Math.floor(Math.random() * ((y-x)+1) + x);
+				$('#bgImageWrapper').prepend($('<img src="images/background/video-background-'+imageValue+'.jpg"/>').addClass('new source').css('opacity','0'));
 			}
 			
 			
@@ -1277,7 +1282,13 @@ function runBg(){
 		activePlayer = 'none';
 		bgRunning = true;
 		showLoading();
-		$('#bgImageWrapper').prepend($('<img src="'+$('#bgImages li.active img').attr('src')+'" />').addClass('new source').css('opacity','0'));
+
+		//Random video Background
+		var x = 1;
+		var y = 4;
+		var imageValue = Math.floor(Math.random() * ((y-x)+1) + x);
+		$('#bgImageWrapper').prepend($('<img src="images/background/video-background-'+imageValue+'.jpg"/>').addClass('new source').css('opacity','0'));
+		// $('#bgImageWrapper').prepend($('<img src="'+$('#bgImages li.active img').attr('src')+'" />').addClass('new source').css('opacity','0'));
 		$('#bgImageWrapper img.new').load(function(){
 			$(this).css('opacity', '0');
 			$(this).attr('width', $(this).width());
@@ -1356,7 +1367,7 @@ function runBgAni(){
 			'width':'900',
 			'height':'506',
 			'uid':'51ed3b4e38',
-			'vid': vid
+			'vid': liveVid
 			});
 		}
 		else{
