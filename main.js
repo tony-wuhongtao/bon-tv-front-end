@@ -466,10 +466,12 @@ function galleryThumbs(activeItem, mode){
 	$('#bgImages li').hover(function(){
 			$(this).find('img.thumb').stop().animate({opacity:'1'}, 500);
 			$(this).find('.thumbType').stop().animate({opacity:'1'}, 500);
+			$(this).find('.thumbTitle').stop().animate({opacity:'1'}, 500);
 	},function(){
 		if(!$(this).hasClass('active')){
 			$(this).find('img.thumb').stop().animate({opacity:'.3'}, 500);
 			$(this).find('.thumbType').stop().animate({opacity:'0'}, 500);
+			$(this).find('.thumbTitle').stop().animate({opacity:'0'}, 500);
 		}
 	}).click(function(){
 		if(!$(this).hasClass('active') && !bgRunning)
@@ -486,9 +488,11 @@ function galleryThumbs(activeItem, mode){
 		var mediaType = $(this).find("a").attr('class');
 		if(mediaType=='li-live')
 		{
+			$(this).append($('<div></div>').addClass('thumbTitle').css('opacity', '0').html('<span>'+$(this).find('h3').text()+'</span>'));
 			$(this).append($('<div></div>').addClass('thumbType thumbLive').css('opacity', '0'));
 		}
 		else{
+			$(this).append($('<div></div>').addClass('thumbTitle').css('opacity', '0').html('<span>'+$(this).find('h3').text()+'</span>'));
 			$(this).append($('<div></div>').addClass('thumbType thumbVod').css('opacity', '0'));
 		}
 		// if(mediaType=='youtube' || mediaType=='vimeo' || mediaType=='jwplayer')
