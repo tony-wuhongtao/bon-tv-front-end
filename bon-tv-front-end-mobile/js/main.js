@@ -64,8 +64,8 @@
     var interval = setInterval(function(){
       var li_length = $('.portfolio-image li').length;
       if(li_length > 2){
-        initPolyv();
         clearInterval(interval);
+        initPolyv();
       }
     }, 1000);
 
