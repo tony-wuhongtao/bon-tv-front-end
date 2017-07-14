@@ -76,17 +76,21 @@
       var has_video = $(this).children('.has_video');
       var vUrl = has_video.text();
 
+      $('#polyv-'+vUrl).empty();
+
       if(vUrl != '')
       {
         if( vUrl.substring(0,4) == 'live' )
         {
+          //polyv live
+          var has_image = $(this).children('.has_image');
+          var image_url = 'images/bon_tv.jpg';
+          if( has_image,length > 0 )
+          {
+            image_url = has_image.text();
+          }
           var liveVid = vUrl.substring(4);
-          var player = polyvObject('#polyv-'+vUrl).livePlayer({
-          'width':'315',
-          'height':'185',
-          'uid':'51ed3b4e38',
-          'vid': liveVid
-          });
+          $('#polyv-'+vUrl).append('<a href="http://live.polyv.cn/watch/'+liveVid+'" class="video-link"><img class="video-image" src="'+image_url+'"><img class="video-link-button" src="images/button-play.png"></a>');
         }
         else{
           var player = polyvObject('#polyv-'+vUrl).videoPlayer({

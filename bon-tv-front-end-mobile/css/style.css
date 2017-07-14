@@ -109,7 +109,7 @@ img { max-width: 100%; }
   position: absolute;
   left: 50%;
   top: 50%;
-  background-image: url(../images/loader.gif);
+  // background-image: url(../images/loader.gif);
   background-repeat: no-repeat;
   background-position: center center;
   text-align: center;
@@ -639,7 +639,7 @@ ul.portfolio-image li .desc{
 ul.portfolio-image li h3{
   color: #b81c22;
   font-family: 'Terminal Dosis', sans-serif;
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 22px;
   line-height: 1.2;
 }
@@ -714,4 +714,20 @@ span.textlight{color:#b81c22;}
 .title-h4{
   color: #b81c22;
   font-family: 'Terminal Dosis', sans-serif;
+}
+
+.video-link .video-link-button{
+  display: block; 
+  left: 50%; 
+  top: 50%; 
+  width: 80px; 
+  height: 80px; 
+  margin-left: -40px; 
+  margin-top: -40px; 
+  position: absolute; 
+  opacity: 0.8;
+}
+
+.polyv-video{
+  position: relative;
 }
