@@ -3,7 +3,11 @@
   $(window).on("load", function() { // makes sure the whole site is loaded
     //preloader
     $("#status").fadeOut(); // will first fade out the loading animation
-    $("#preloader").delay(450).fadeOut("slow"); // will fade out the white DIV that covers the website.  
+
+    // if($("#preloader").attr('display') != 'none')
+    // {
+    //   $("#preloader").delay(450).fadeOut("slow"); // will fade out the white DIV that covers the website.  
+    // }
   });
 
 
@@ -69,6 +73,11 @@
       }
     }, 1000);
 
+    if($("#preloader").attr('display') != 'none')
+    {
+      $("#preloader").delay(500).fadeOut("slow");
+    }
+    
   });
 
   function initPolyv(){
@@ -122,7 +131,7 @@
 
   window.onload = inits();
 
-  //nav-active
+  // nav-active
   function onScroll(event){
     var scrollPosition = $(document).scrollTop();
     $('.menu-list a').each(function () {

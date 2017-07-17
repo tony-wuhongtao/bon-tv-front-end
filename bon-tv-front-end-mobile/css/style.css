@@ -570,6 +570,7 @@ ul.portfolio-image li {
   display: inline-block;
   overflow: hidden;
   padding-bottom: 25px;
+  height: 383px;
 }
 ul.portfolio-image li:hover {
   cursor: pointer;
@@ -582,6 +583,7 @@ ul.portfolio-image li img {
   position: relative;
   width: 100%;
   height: auto;
+  max-height: 185px;
   left: 0;
   top: 0;
 }
@@ -642,6 +644,12 @@ ul.portfolio-image li h3{
   margin-top: 10px;
   font-size: 22px;
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 52px;
 }
 
 ul.portfolio-image li p{
